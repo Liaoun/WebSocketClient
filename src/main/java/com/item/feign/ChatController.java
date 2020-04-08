@@ -7,20 +7,21 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-@Configuration
 @FeignClient(value = "SERVICE")
 public interface ChatController {
 
 
-    @RequestMapping("/chat/getLastChatContent")
-    List<Chat> getLastChatContent(@Param("send") String send, @Param("accept") String accpet);
+    @PostMapping("getLastChatContent")
+    List<Chat> getLastChatContent(@RequestParam("send") String send, @RequestParam("accept") String accpet);
 
-    @RequestMapping("/chat/getLastChatAcceptId")
-    String getLastChatAcceptId(@Param("user") User user);
+    @PostMapping("getLastChatAcceptId")
+    String getLastChatAcceptId(@RequestParam("user") User user);
 
-    @RequestMapping("/chat/addChatRecord")
-    boolean addChatRecord(@Param("chat") Chat chat);
+    @PostMapping("addChatRecord")
+    boolean addChatRecord(@RequestParam("chat") Chat chat);
 }

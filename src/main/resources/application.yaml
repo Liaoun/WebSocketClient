@@ -28,6 +28,6 @@ eureka:
 logging:
   file:
     path: spring
-custem:
-  server:
-    name: SERVICE
+feign:
+  httpclient:
+    enabled: true

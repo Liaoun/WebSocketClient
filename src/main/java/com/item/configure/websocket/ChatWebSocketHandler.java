@@ -25,19 +25,19 @@ public class ChatWebSocketHandler implements WebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession webSocketSession) throws Exception {
 
-        Map<String,Object> map=webSocketSession.getAttributes();
+//        Map<String,Object> map=webSocketSession.getAttributes();
+//
+//        String account=map.get("userAccount").toString();
+//
+//        String username=map.get("userName").toString();
+//
+//        PA.WW.put(webSocketSession.getId(),webSocketSession);
+//
+//        PA.AW.put(account,webSocketSession.getId());
+//
+//        PA.WA.put(webSocketSession.getId(),account);
 
-        String account=map.get("userAccount").toString();
-
-        String username=map.get("userName").toString();
-
-        PA.WW.put(webSocketSession.getId(),webSocketSession);
-
-        PA.AW.put(account,webSocketSession.getId());
-
-        PA.WA.put(webSocketSession.getId(),account);
-
-        System.out.println(username+"------connection build");
+        System.out.println("------connection build");
 
     }
 

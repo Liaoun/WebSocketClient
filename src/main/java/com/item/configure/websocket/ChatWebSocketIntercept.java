@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.server.HandshakeInterceptor;
 
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @Component
@@ -18,7 +19,13 @@ public class ChatWebSocketIntercept implements HandshakeInterceptor {
 
         if (serverHttpRequest instanceof ServletServerHttpRequest){
             ServletServerHttpRequest request=(ServletServerHttpRequest)serverHttpRequest;
-            User user= (User)request.getServletRequest().getSession().getAttribute("user");
+            HttpSession session=request.getServletRequest().getSession(false);
+            if (session == null) {
+                System.out.println("进入判断");
+                return false;
+            }
+
+            User user= (User) session.getAttribute("user");
             if (user!=null){
                 map.put("userAccount",user.getAccount());
                 map.put("userName",user.getUsername());

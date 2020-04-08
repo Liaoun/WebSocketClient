@@ -3,8 +3,6 @@ package com.item.bean.custom;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-@Component
-@ConfigurationProperties(prefix = "custom.server")
 public class Server {
     private String name;
 
