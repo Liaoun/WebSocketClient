@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        $(function () {
+            var websocket =new WebSocket("ws://localhost:8083/ws");
+            websocket.onopen=function () {
+
+            }
+
+            websocket.onmessage=function (event) {
+                console.log(event.data)
+                $("#room").append(event.data)
+
+            }
+
+            websocket.onerror=function (event) {
+
+            }
+            $("#send").click(function () {
+                if ($("#message").val().trim()=="")
+                    return "请输入内容";
+                websocket.send($("#message").val());
+
+            })
+        })
+    </script>
+</head>
+<body>
+    <div id="room">
+
+    </div>
+    <input id="message">
+    <button id="send">send</button>
+</body>
+</html>

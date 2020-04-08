@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <title>Title</title>
+    <script type="text/javascript">
+      $(function () {
+          $("form").on('submit',function () {
+                if ($("#account").trim()=="" || $("#name").trim()=="" || $("#name").trim()=="" || $("#account").length>=6){
+                    alert("用户信息不完整---账号必须大于等于6")
+                    return false;
+                }
+                return true;
+          })
+      })
+    </script>
+</head>
+<body>
+<form th:action="@{/user/login}" method="post">
+    <input id="account" name="account" placeholder="请输入账号"/>
+    <input id="name" name="name" placeholder="请输入用户名"/>
+    <input id="password" name="password" placeholder="请输入密码"/>
+    <button type="submit" id="submit">submit</button>
+    <span th:text="${message}"></span>
+</form>
+
+</body>
+</html>
